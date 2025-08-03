@@ -39,6 +39,7 @@ export async function seed() {
       releaseDate: new Date("1975-10-31"),
       filePath: "/uploads/bohemian_rhapsody.mp3",
       fileSize: 1024000,
+      coverUrl: "/covers/album.jpg",
       uploadedBy: user1[0].id,
     })
     .returning();
@@ -54,6 +55,7 @@ export async function seed() {
       releaseDate: new Date("1971-09-09"),
       filePath: "/uploads/imagine.mp3",
       fileSize: 512000,
+      coverUrl: "/covers/album.jpg",
       uploadedBy: user2[0].id,
     })
     .returning();

@@ -20,8 +20,9 @@ export const songs = pgTable("songs", {
   genre: text("genre").notNull(),
   durationSeconds: integer("duration_seconds").notNull(),
   releaseDate: timestamp("release_date").notNull(),
-  filePath: text("file_path").notNull(), // Path to MP3 file
-  fileSize: integer("file_size").notNull(), // File size in bytes
+  filePath: text("file_path").notNull(),
+  fileSize: integer("file_size").notNull(),
+  coverUrl: text("cover_url"),
   isPublic: boolean("is_public").default(true),
   uploadedBy: uuid("uploaded_by")
     .notNull()

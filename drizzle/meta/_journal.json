@@ -8,6 +8,13 @@
       "when": 1754179298272,
       "tag": "0000_jittery_plazm",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1754194349710,
+      "tag": "0001_shiny_richard_fisk",
+      "breakpoints": true
     }
   ]
 }
