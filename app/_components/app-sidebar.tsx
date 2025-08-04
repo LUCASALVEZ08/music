@@ -8,77 +8,14 @@ import {
   SidebarGroupLabel,
   SidebarHeader,
   SidebarMenu,
-  SidebarMenuButton,
   SidebarMenuItem,
   SidebarRail,
 } from "@/app/_components/ui/sidebar";
 import Image from "next/image";
 import { Button } from "./ui/button";
 import { PlusIcon } from "lucide-react";
-
-const data = {
-  navMain: [
-    {
-      items: [
-        {
-          subtitle: "Inicio",
-          url: "#",
-        },
-        {
-          subtitle: "Explorar",
-          url: "#",
-        },
-        {
-          subtitle: "Bibliotecas",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Suas atividades",
-      items: [
-        {
-          subtitle: "Curtidas",
-          url: "#",
-        },
-        {
-          subtitle: "Comentários",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Playlist",
-      url: "#",
-      items: [
-        {
-          subtitle: "Components",
-          url: "#",
-        },
-        {
-          subtitle: "File Conventions",
-          url: "#",
-        },
-        {
-          subtitle: "Functions",
-          url: "#",
-        },
-        {
-          subtitle: "next.config.js Options",
-          url: "#",
-        },
-        {
-          subtitle: "CLI",
-          url: "#",
-        },
-        {
-          subtitle: "Edge Runtime",
-          url: "#",
-        },
-      ],
-    },
-  ],
-};
+import { data } from "../_utils/data";
+import SidebarMenuButtonComponent from "./sidebar-menu-button";
 
 export default function SidebarComponent({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
@@ -86,22 +23,20 @@ export default function SidebarComponent({ ...props }: React.ComponentProps<type
       <SidebarHeader>
         <Image src="/image.png" width={100} height={100} alt="Logo" />
       </SidebarHeader>
-      <SidebarContent className="-mt-10">
-        {data.navMain.map(item => (
-          <SidebarGroup key={item.title}>
-            <SidebarGroupLabel className="text-xs font-semibold text-white/24">
-              {item.title}
-            </SidebarGroupLabel>
+      <SidebarContent>
+        {data.navMain.map((item, index) => (
+          <SidebarGroup key={item.title || `group-${index}`}>
+            {item.title && (
+              <SidebarGroupLabel className="text-xs font-semibold text-white/24">
+                {item.title}
+              </SidebarGroupLabel>
+            )}
             <SidebarGroupContent>
               <SidebarMenu className="space-y-1">
                 {item.items &&
                   item.items.map(subItem => (
                     <SidebarMenuItem key={subItem.subtitle}>
-                      <SidebarMenuButton asChild>
-                        <a href={subItem.url} className="text-2xl font-semibold text-white">
-                          {subItem.subtitle}
-                        </a>
-                      </SidebarMenuButton>
+                      <SidebarMenuButtonComponent subItem={subItem} />
                     </SidebarMenuItem>
                   ))}
               </SidebarMenu>
